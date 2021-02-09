@@ -24,8 +24,8 @@ def create_app():
     app.config.update(dict(
         RECAPTCHA_ENABLED=True,
         RECAPTCHA_USE_SSL=False,
-        RECAPTCHA_SITE_KEY=RECAPTCHA_SITE_KEY,
-        RECAPTCHA_SECRET_KEY=RECAPTCHA_SECRET_KEY,
+        RECAPTCHA_SITE_KEY="6LcboUwaAAAAAB6iZ_936CmHdULkXqAHJU_216Kg",
+        RECAPTCHA_SECRET_KEY="6LcboUwaAAAAAMLIuutVczc2VIT7jGACNE5v8Lta",
     ))
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://{mysql_user}:{mysql_password}@{mysql_url}:{mysql_port}/{mysql_db}' \
