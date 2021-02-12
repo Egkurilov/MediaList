@@ -1,17 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-     <b>THIS IS USER PAGE</b>
-    <br>
-    <a href="/login">login</a>
-    <br>
-    <a href="/register">Register</a>
-    <br>
-    <a href="/user">UserPage</a>
-</head>
-<body>
-
-</body>
-</html>
+{% include "/components/header.html" %}
+    <div>
+        <input class="form-control form-control-lg mb-4" type="text" id="searchInput" placeholder="Введите название фильма...">
+        <div class="bg-light p-5 rounded">
+            <div class="col-sm-8 mx-auto">
+                <div class="row">
+                {% for film in film_list %}
+                    <div class="col-md-4">
+                        <div class="card mb-3 text-secondary">
+                            <img src="{{ film.posterUrl }}" class="card-img-top" alt="{{ film.nameRu }}" height="440">
+                            <span class="badge bg-light text-dark year">{{ film.year }}</span>
+                            <span class="badge bg-dark type">{{ 'Фильм' if film.type == "FILM" else 'Сериал' }}</span>
+                            <div class="card-body">
+                                <h5 class="card-title mb-0" title="{{ film.nameRu }} / {{ film.nameEn }}">{{ film.nameRu }}</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><i class="fas fa-globe me-2"></i>{{ film.countries }}</li>
+                                <li class="list-group-item genres"><i class="fas fa-theater-masks me-1"></i>{{ genres|join(', ')|capitalize }}</li>
+                            </ul>
+                            <a href="{{ film.kinopoiskUrl }}" target="_blank" class="card-footer text-decoration-none text-muted text-center">
+                                <i class="fas fa-link"></i> {{ 'Фильм' if film.type == "FILM" else 'Сериал' }} на кинопоиске
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% include "/components/footer.html" %}
