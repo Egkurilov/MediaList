@@ -1,8 +1,6 @@
 from . import db
-from dataclasses import dataclass
 
 
-@dataclass
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100), unique=True)
@@ -10,9 +8,7 @@ class User(db.Model):
     name = db.Column(db.String(1000))
 
 
-@dataclass
 class FilmList(db.Model):
-
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     film_id = db.Column(db.String(250), nullable=False, server_default="")
     nameRu = db.Column(db.String(250), nullable=False, default="")
