@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3510ae52-e22c-4742-a3fa-68ab8554ca14" name="h.shaneque.ru" url="http://188.32.74.54">
+        <fileTransfer rootFolder="/home/shaneque/work" accessType="SFTP" host="188.32.74.54" port="22" sshConfigId="8716e4a3-371d-40c9-bf35-6313deafcdc9" sshConfig="shaneque@188.32.74.54:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
