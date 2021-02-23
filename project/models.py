@@ -15,8 +15,19 @@ class FilmList(db.Model):
     nameEn = db.Column(db.String(250), nullable=False)
     kinopoiskUrl = db.Column(db.String(250), nullable=False)
     posterUrl = db.Column(db.String(250), nullable=False)
+    posterUrlPreview = db.Column(db.String(250), nullable=False)
     year = db.Column(db.String(250), nullable=False)
     filmLength = db.Column(db.String(250), nullable=False)
     countries = db.Column(db.String(250), nullable=False)
     genres = db.Column(db.String(250), nullable=False)
     type = db.Column(db.String(250), nullable=False)
+    kp_rating = db.Column(db.String(250), nullable=False)
+    imdb_rating = db.Column(db.String(250), nullable=False)
+
+
+class User_backlog(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer)
+    content_id = db.Column(db.Integer)
+    type = db.Column(db.Enum)
+    date = db.Column(db.Integer)

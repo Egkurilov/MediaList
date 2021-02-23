@@ -1,6 +1,6 @@
 import json
 from flask import render_template, request, session, redirect, Blueprint
-from project.models import FilmList
+from project.models import FilmList, User_backlog
 from project.utils import AlchemyEncoder
 
 main = Blueprint('main', __name__)
@@ -17,8 +17,8 @@ def user_page():
         pass
     else:
         return redirect('/login')
-    query = FilmList.query \
-        .filter(FilmList.nameRu.ilike('%Паук%')).limit(10)
+    query = FilmList.query.join(User_backlog, FilmList.id == User_backlog.content_id)\
+        .filter(User_backlog.user_id == session['id'], User_backlog.type == 'film')
     return render_template('user.html', film_list=query)
 
 
