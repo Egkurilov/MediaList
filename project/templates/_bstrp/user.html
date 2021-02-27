@@ -1,26 +1,5 @@
 {% include "/components/header.html" %}
-
-<div class="ui grid">
-    {% for film in film_list %}
-    <div class="eight column row">
-        <div class="ui column fluid card">
-            <div class="image">
-                <div class="ui right ribbon label">{{ film.year }}</div>
-                <!-- <img src="https://via.placeholder.com/280x440?text=POSTER"> -->
-                <img src="https://kinopoiskapiunofficial.tech/images/posters/kp_small/{{ film.film_id }}.jpg" style="height: 160px;">
-            </div>
-            <div class="content">
-                <a class="header center aligned">{{ film.nameRu }}</a>
-            </div>
-        </div>
-    </div>
-    {% endfor %}
-</div>
-
-
-
-
-<!--     <div>
+    <div>
         <input class="form-control form-control-lg mb-4" type="text" id="searchInput" placeholder="Введите название фильма...">
         <div class="bg-light p-5 rounded">
             <div class="row">
@@ -46,5 +25,5 @@
             {% endfor %}
             </div>
         </div>
-    </div> -->
+    </div>
 {% include "/components/footer.html" %}

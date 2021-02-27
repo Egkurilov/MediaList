@@ -33,4 +33,8 @@ jQuery(document).ready(function($) {
         }, 500);
     });
 
+  $('.film.cards .image').dimmer({
+    on: 'hover'
+  });
+
 });

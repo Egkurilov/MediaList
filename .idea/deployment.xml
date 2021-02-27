@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="h.shaneque.ru" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" autoUpload="Always" serverName="root@todo.shaneque.ru:22 agent" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="h.shaneque.ru">
+      <paths name="root@todo.shaneque.ru:22 agent">
         <serverdata>
           <mappings>
-            <mapping deploy="/MediaList" local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
     </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
