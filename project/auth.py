@@ -1,6 +1,6 @@
 import re
 
-from flask import Flask, render_template, request, flash, session, redirect, app, Blueprint
+from flask import render_template, request, session, redirect,  Blueprint
 
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import recaptcha
@@ -28,6 +28,12 @@ def login():
             error = "Что то пошло не так"
             return render_template('auth/login.html', error=error)
     return render_template('auth/login.html')
+
+
+@auth.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/')
 
 
 @auth.route('/register', methods=['POST', 'GET'])
