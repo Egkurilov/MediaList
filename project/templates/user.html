@@ -1,13 +1,18 @@
 {% include "/components/header.html" %}
 
+<div class="ui fluid massive icon input" style="margin-bottom: 20px;">
+  <input type="text" id="searchInput" placeholder="Введите название фильма...">
+  <i class="search icon"></i>
+</div>
+
 <div class="ui grid">
     {% for film in film_list %}
-    <div class="eight column row">
-        <div class="ui column fluid card">
+    <div class="four wide column">
+        <div class="ui fluid card">
             <div class="image">
                 <div class="ui right ribbon label">{{ film.year }}</div>
                 <!-- <img src="https://via.placeholder.com/280x440?text=POSTER"> -->
-                <img src="https://kinopoiskapiunofficial.tech/images/posters/kp_small/{{ film.film_id }}.jpg" style="height: 160px;">
+                <img src="https://kinopoiskapiunofficial.tech/images/posters/kp_small/{{ film.film_id }}.jpg" style="max-height: 360px;">
             </div>
             <div class="content">
                 <a class="header center aligned">{{ film.nameRu }}</a>

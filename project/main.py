@@ -26,9 +26,8 @@ def user_page():
 def search():
     query = FilmList.query \
         .filter(FilmList.nameRu.ilike('%' + request.args.get('q') + '%')).limit(5).all()
+    return json.dumps(query, cls=AlchemyEncoder)
 
-    print(json.dumps(query, cls=AlchemyEncoder))
-    return ""
 
 
 @main.route('/search/film', methods=['POST'])

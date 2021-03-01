@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, session
+from flask import Flask, render_template
 from flask_migrate import Migrate, Manager, MigrateCommand
 from flask_recaptcha import ReCaptcha
 from flask_sqlalchemy import SQLAlchemy

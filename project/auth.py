@@ -23,6 +23,7 @@ def login():
         if user and check_password_hash(user.password, passwd):
             session['username'] = email
             session['id'] = user.id
+
             return redirect('/user')
         else:
             error = "Что то пошло не так"
