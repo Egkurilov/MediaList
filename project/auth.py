@@ -6,6 +6,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import recaptcha
 from . import db
 from .models import User
+from requests import HTTPError, RequestException
+import requests
+import json
+from . import oauth
 
 auth = Blueprint('auth', __name__)
 
@@ -35,6 +39,21 @@ def login():
 def logout():
     session.clear()
     return redirect('/')
+
+
+@auth.route('/oauth', methods=['POST'])
+def oOauth():
+    email = request.form.get('network')
+    email = request.form.get('uid')
+    client_data = oauth.auth_with_ulogin(request.form.get('token'))
+    oauth.check_valiable(client_data)
+
+    return client_data
+
+
+        
+
+
 
 
 @auth.route('/register', methods=['POST', 'GET'])

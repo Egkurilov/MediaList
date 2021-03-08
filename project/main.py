@@ -1,8 +1,10 @@
 import json
 from flask import render_template, request, session, redirect, Blueprint
-from project.models import FilmList, User_backlog
-from project.utils import AlchemyEncoder
+from werkzeug.security import generate_password_hash
 
+from project.models import FilmList, User_backlog, User
+from project.utils import AlchemyEncoder
+from . import db
 main = Blueprint('main', __name__)
 
 
@@ -25,9 +27,8 @@ def user_page():
 @main.route('/ajax/search', methods=['POST'])
 def search():
     query = FilmList.query \
-        .filter(FilmList.nameRu.ilike('%' + request.args.get('q') + '%')).limit(5).all()
+        .filter(FilmList.nameRu.ilike('%' + request.args.get('q') + '%')).limit(10).all()
     return json.dumps(query, cls=AlchemyEncoder)
-
 
 
 @main.route('/search/film', methods=['POST'])
@@ -42,3 +43,21 @@ def add():
     for q in query:
         print(q)
         return "q"
+
+
+@main.route('/profile', methods=['GET', 'POST'])
+def profile():
+    if request.form.get('submit') is not None:
+        email = request.form.get('email')
+        passwd = request.form.get('password')
+        username = request.form.get('username')
+        if len(passwd) < 6:
+            error = "Вы не прошли проверку длину пароля"
+            return render_template('profile.html', error=error,
+                                   email=email, username=username)
+        User.query.filter(User.id == session['id']) \
+            .update({'email': email, 'name': username, 'password': generate_password_hash(passwd, method='sha256')})
+        db.session.commit()
+
+    query = User.query.filter(User.id == session['id']).limit(1).all()
+    return render_template('profile.html', user=query)

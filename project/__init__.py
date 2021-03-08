@@ -48,6 +48,9 @@ def create_app():
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
+    from .oauth import oauth as oauth_blueprint
+    app.register_blueprint(oauth_blueprint)
+
     app.config.from_object(__name__)
     Session(app)
 
